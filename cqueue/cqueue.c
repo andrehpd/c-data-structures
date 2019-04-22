@@ -14,21 +14,21 @@
 /* Private function prototypes -----------------------------------------------*/
 /* Function Implementation -------------------------------------------------- */
 
-void CQUEUE_Init(queue_t *q, uint8_t *queueBuffer, uint32_t queueSize) {
+void cqueue_init(Queue *q, uint8_t *queueBuffer, uint32_t queueSize) {
   q->end = 0x00;
   q->front = 0x00;
   q->data = queueBuffer;
   q->size = queueSize;
 }
 
-uint16_t CQUEUE_IsEmpty(queue_t *q) {
+uint16_t cqueue_is_empty(Queue *q) {
   if (q->front == q->end)
     return 1;
   else
     return 0;
 }
 
-uint8_t *CQUEUE_Add(queue_t *q, uint8_t *data, uint8_t size) {
+uint8_t *cqueue_add(Queue *q, uint8_t *data, uint8_t size) {
   uint16_t i = 0;
 
   for (i = 0; i < size; i++) {
@@ -44,7 +44,7 @@ uint8_t *CQUEUE_Add(queue_t *q, uint8_t *data, uint8_t size) {
   return (uint8_t *)&q->data[q->end];
 }
 
-uint8_t *CQUEUE_Remove(queue_t *q, uint16_t *length) {
+uint8_t *cqueue_remove(Queue *q, uint16_t *length) {
   uint8_t *ptr = NULL;
   if (q->end > q->front) {
     *length = q->size - q->end;

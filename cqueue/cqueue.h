@@ -22,14 +22,14 @@ typedef struct {
   uint16_t front;
   uint16_t end;
   uint16_t size;
-} queue_t;
+} Queue;
 /* Public variables ---------------------------------------------------------*/
 /* Public function prototypes -----------------------------------------------*/
 /* Exported functions -------------------------------------------------------*/
-void CQUEUE_Init(queue_t *q, uint8_t *queueBuffer, uint32_t queueSize);
-uint16_t CQUEUE_IsEmpty(queue_t *q);
-uint8_t *CQUEUE_Add(queue_t *q, uint8_t *data, uint8_t size);
-uint8_t *CQUEUE_Remove(queue_t *q, uint16_t *length);
+void cqueue_init(Queue *q, uint8_t *queueBuffer, uint32_t queueSize);
+uint16_t cqueue_is_empty(Queue *q);
+uint8_t *cqueue_add(Queue *q, uint8_t *data, uint8_t size);
+uint8_t *cqueue_remove(Queue *q, uint16_t *length);
 
 
 #ifdef __cplusplus
